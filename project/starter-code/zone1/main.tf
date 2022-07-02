@@ -2,7 +2,7 @@ terraform {
   required_providers {
     aws = {
         source  = "hashicorp/aws"
-        version = ">= 1.24.0"
+        configuration_aliases = [ aws.usw1 ]
     }
   }
 }
@@ -39,7 +39,7 @@ locals {
 
    account_owner = local.name
    name          = "${local.name}-project"
-   azs           = ["us-west-1b","us-west-1c"]
+   azs           = ["us-west-1b","us-west-1a"]
    private_subnet_tags = {
      "kubernetes.io/role/internal-elb" = 1
    }
