@@ -1,9 +1,13 @@
-terraform {
-  required_providers {
-    aws = {
-      source = "hashicorp/aws"
-    }
-  }
+resource "aws_ecr_repository" "default_region" {
+  name                 = "us-east-2"
+  image_tag_mutability = "MUTABLE"
+}
+
+resource "aws_ecr_repository" "select_region" {
+  name                 = "us-west-1"
+  image_tag_mutability = "MUTABLE"
+
+  provider = aws.usw1
 }
 
 locals {
