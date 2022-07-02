@@ -1,8 +1,7 @@
 terraform {
   required_providers {
     aws = {
-        source  = "hashicorp/aws"
-        configuration_aliases = [ aws.usw1 ]
+      source = "hashicorp/aws"
     }
   }
 }
@@ -46,9 +45,9 @@ locals {
    public_subnet_tags = {
      "kubernetes.io/role/elb" = 1
    }
-  providers = {
-    aws = aws.usw1
-  }
+   providers = {
+     aws = aws.usw1
+   }
  }
 
 output "vpc_id" {

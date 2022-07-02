@@ -1,4 +1,13 @@
 terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      configuration_aliases = [
+        aws.usw1
+      ]
+    }
+  }
+
    backend "s3" {
      bucket = "udacity-tf-project2"
      key    = "terraform/terraform.tfstate"
