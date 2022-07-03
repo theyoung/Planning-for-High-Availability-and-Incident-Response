@@ -1,0 +1,18 @@
+#init db
+POST http://18.117.188.146/init HTTP/1.1
+Content-Type: application/json
+
+{
+	"name": "init db",
+	"location": "home",
+	"description": "initialize the DB"
+}
+
+#init db
+POST http://18.117.188.146/auth/register HTTP/1.1
+Content-Type: application/json
+
+{
+	"username": "theyoung",
+	"email": "theyoung2002@naver.com"
+}

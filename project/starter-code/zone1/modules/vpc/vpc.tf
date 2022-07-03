@@ -1,3 +1,17 @@
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+    }
+  }
+}
+
+data "aws_region" "current" {}
+
+output "region" {
+  value = data.aws_region.current
+}
+
 resource "aws_vpc" "this" {
    cidr_block           = var.cidr_block
    enable_dns_hostnames = true
