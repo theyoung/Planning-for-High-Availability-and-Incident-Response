@@ -1,10 +1,10 @@
  # Business Continuity Requirements
  ## HA Requirements
  The business has determined the following as the minimum number of nodes for an HA/DR scenario:
-- Each VM has 3 instances (EC2)
-- Each Kubernetes cluster has 2 nodes (EKS)
-- The VPC has IPs in multiple availability zones (VPC)
-- An application load balancer in each region (ALB)
+- Each VM has 3 instances (EC2) (c)
+- Each Kubernetes cluster has 2 nodes (EKS)(c)
+- The VPC has IPs in multiple availability zones (VPC) (c)
+- An application load balancer in each region (ALB) (c)
 
 ## SQL Requirements
 In regards to their SQL cluster, the following requirements should be met:
