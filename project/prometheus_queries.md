@@ -23,4 +23,4 @@ sum(rate(flask_http_request_total{status=~"2.."}[1m]))
 ## Error Budget - Remaining Error Budget
 ### The error budget is 20%
 
-0.2 - (1 - (sum(increase(flask_http_request_total{status=~"2.."}[5m])))/sum(increase(flask_http_request_total[5m]))) * 200
+(0.2 - (1 - (sum(increase(flask_http_request_total{status=~"2.."}[5m])))/sum(increase(flask_http_request_total[5m]))) )*400

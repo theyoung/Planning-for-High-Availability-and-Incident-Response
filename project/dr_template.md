@@ -29,13 +29,16 @@
 ### Pre-Steps:
 List steps you would perform to setup the infrastructure in the other region. It doesn't have to be super detailed, but high-level should suffice.
 
-- The working zone is located in us-east-2. Increase scalability and availability through a load balancer. EC2 and VPC can respond to issues within a region by using three or more names of Availability Zones.
-- By using RDS Cluster, if there is a problem in the write db or read db, it is possible to respond to problems within the region.
-- By separately managing DR zones for Application Server, EKS, and RDS, etc, a DR system is provided in a separate region (west) so that service availability can continue even if a problem occurs in the entire east region.
+- Ensure both sites are configured the same (us-east-2 and us-west-1)
+- Ensure the DR site working properly as the working site does. (us-west-1)
+- Use infrastructure as code (IaC) to build DR site, automatically. (zone2 or us-west-1)
 
 ## Steps:
 You won't actually perform these steps, but write out what you would do to "fail-over" your application and database cluster to the other region. Think about all the pieces that were setup and how you would use those in the other region
 
-- Converts the DNS IP band sent to us-east-2 through Route 53 to the us-west-2 region ip band.
-- Check that RDS Cluster is operating normally in us-west-2 region.
-- Check that EKS is operating normally in us-west-2 region and traffic is coming in through Grafana dashboard and Prometheus.
+- Use DNS Service (Amazon route 53) and change IP point to DR zone (us-west-1)
+  - Create a cloud load balancer to point to an application instance group in DR zone
+  - The IP of the load balancer in DR will be applied in DNS Service
+- Keep a database replication instances to another region (DR zone, us-west-1)
+  - Manually force the secondary region(us-west-1) to become primary at the database level
+  - or, Automatically failover the database by health checks
